@@ -14,3 +14,4 @@ for x in food:
     print(x)
 
 food.clear()
+
