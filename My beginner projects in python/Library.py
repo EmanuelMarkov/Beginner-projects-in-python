@@ -1,7 +1,5 @@
-print("Hi there, I am your librarÿ's managment system")
-action = input("Please choose one of the following actions: \n display|add|remove|search|exit")
+# SET OF BOOKS
 
-#list of books
 Books = [
     ("To Kill a Mockingbird", "Harper Lee", 1960),
     ("1984", "George Orwell", 1949),
@@ -15,65 +13,46 @@ Books = [
     ("War and Peace", "Leo Tolstoy", 1869)]
 
 
+while 1>0 :
+    print("Hi there, place pick one of the following action  \n DISPLAY|ADD|REMOVE|SEARCH|EXIT ")
+
+
+#DISPLAY - function that displays all the things in the given list
 def display():
-    print("Here are all books")
     for i in Books:
-        print(str(i) + " " + Books[i] + "\n")
-exit
+        print(str(Books[i]) + "\n")
+        break
 
-    
-continue_program = True
+#ADD -function that adds a book evertime it is called
 
-def add_a_book(name_of_the_book,autor,year_of_relsese):
-    back = False
-    while back == False:
-       print("Please enter the information in the following manner: Name of the book, Autor and year of release")
-       Books.append((name_of_the_book,autor,year_of_relsese))
-       continue_add = input("Do you wish to continue y/n")
-       if continue_add == "n":
-        exit
-     
-def remove_a_book():
-    back = False
-    while back == False:
-       print("Here is list of all books, enter the numbe infornt of the book you want to get rid of")
-       index_remove = int(input("Type the number: "))
-       Books.remove(index_remove)
-       continue_add = input("Do you wish to continue y/n")
-       if continue_add == "n":
-        exit
-     
-def search_a_book():
-    criteria_search= input("Please choose a criteria for searching the book - name, autor or year of relese")
-    if criteria_search.lower() == "name":
-       name_of_book = input("What is the name? ")
-       for i in Books:
-          if Books[i][0].lower() == name_of_book.lower():
-             print("Here is what I have found: " + "\n" +  str(Books[i]))
-    elif criteria_search.lower() == "year":
-       year_of_book = input("What is the year of relelse? ")
-       for i in Books:
-          if Books[i][1].lower() == year_of_book.lower():
-             print("Here is what I have found: " + "\n" +  str(Books[i]))
-       
-    
+def add_book():
+    while 1>0:
+        Books.append(input("Enter the infomation in the following order: Name|Autor|Year"))
+        continue_add_book = input("Do you wish to add another book? y/n")
+        if continue_add_book == "y":
+            add_book()
+        else:
+            break
 
+#REMOVE -function that removes a book at a given index everytime it is call *there can be the option to display all the books again
 
-    
-
-    while continue_program == True:
-        action = input("Please choose one of the following actions: \n display|add|remove|search|exit")
-        if action.lower() == "add":
-           add_a_book
-        elif action.lower() == "remove":
-           remove_a_book
-        elif action.lower() == "display":
-           display()
+def remove_book():
+    while 1>0:
+        display()
+        Books.remove(int(input("Enter the index of a book you want to remove from the list")))
         
-                 
-           
+        
+        continue_remove_book = input("Do you wish to remove another book? y/n")
+        if continue_remove_book == "y":
+           remove_book()
+        else:
+            break
+
+
+#SEARCH -fucntion that will check if a book/books have a given criteria (name,year of publishing, autor)
 
 
 
+#STATISTICS -function that gives information about the books in the list
 
-
+#EXIT -function that will either take you one step back or will finish the whole prorgram
