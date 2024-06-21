@@ -13,22 +13,42 @@ Books = [
     ("War and Peace", "Leo Tolstoy", 1869)]
 
 
-while 1>0 :
-    print("Hi there, place pick one of the following action  \n DISPLAY|ADD|REMOVE|SEARCH|EXIT ")
+# CHECK FOR DUPLICATES ?
+def duplicates_correction(book_to_check):
+    for i in Books:
+        if book_to_check == i:
+            print("Please don't enter duplicates")
+            break
+      
+      
+    
 
 
-#DISPLAY - function that displays all the things in the given list
+
+#DISPLAY - function that displays all the things in the given list 
 def display():
     for i in Books:
-        print(str(Books[i]) + "\n")
-        break
+        
+        print(str(Books.index(i))+ " " + str(i) + "\n")
+        
+    
+        
+      
+        
 
 #ADD -function that adds a book evertime it is called
+#String slicing and fomrating:
 
 def add_book():
     while 1>0:
-        Books.append(input("Enter the infomation in the following order: Name|Autor|Year"))
-        continue_add_book = input("Do you wish to add another book? y/n")
+        print("Enter the infomation in the following information" + "\n")
+        
+        name_book = input("Name of the book " + "\n")
+        autor_book = input ("Name of the autor " + "\n")
+        year_book = int(input("Year of the book " + "\n"))
+        duplicates_correction((name_book.capitalize(),autor_book.capitalize(),year_book))
+        Books.append((name_book.capitalize(),autor_book.capitalize(),year_book))
+        continue_add_book = input("Do you wish to add another book? y/n " + "\n")
         if continue_add_book == "y":
             add_book()
         else:
@@ -39,10 +59,10 @@ def add_book():
 def remove_book():
     while 1>0:
         display()
-        Books.remove(int(input("Enter the index of a book you want to remove from the list")))
+        Books.remove(int(input("Enter the index of a book you want to remove from the list" + "\n")))
         
         
-        continue_remove_book = input("Do you wish to remove another book? y/n")
+        continue_remove_book = input("Do you wish to remove another book? y/n" + "\n")
         if continue_remove_book == "y":
            remove_book()
         else:
@@ -50,6 +70,40 @@ def remove_book():
 
 
 #SEARCH -fucntion that will check if a book/books have a given criteria (name,year of publishing, autor)
+
+def search_book():
+    while 1>0:
+        search_term = input("Enter the term you are searching for" + "\n")
+        
+        print(Books[Books.index(search_term)])
+
+        continue_search_book = input("Do you wish to search another book? y/n" + "\n")
+        if continue_search_book == "y":
+           search_book()
+        else:
+            break
+
+#MENU OF OPTION DISPLAY|ADD|REMOVE|SEARCH|EXIT
+
+while 1>0:
+      
+      print("Hi there, place pick one of the following action  \n DISPLAY|ADD|REMOVE|SEARCH|EXIT " + "\n")
+      action = input()
+      if action == "DISPLAY":
+        display()
+      elif action == "ADD":
+        add_book()
+      elif action == "REMOVE":
+        remove_book()
+      elif action == "SEARCH":
+        search_book()
+      elif action == "EXIT":
+        break
+   
+
+
+
+
 
 
 
